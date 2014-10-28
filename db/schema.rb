@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028141054) do
+ActiveRecord::Schema.define(version: 20141028132830) do
 
   create_table "meetings", force: true do |t|
     t.string   "title"
@@ -27,11 +27,5 @@ ActiveRecord::Schema.define(version: 20141028141054) do
   end
 
   add_index "subjects", ["meeting_id"], name: "index_subjects_on_meeting_id"
-
-  create_table "tests", force: true do |t|
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end
