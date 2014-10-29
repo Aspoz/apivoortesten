@@ -11,5 +11,9 @@
 
   10.times do |j|
     s = Subject.create({title: "Subject #{j}", meeting: m})
+
+    10.times do |k|
+      d = Document.create({title: "Document #{k}", subject: s})
+    end
   end
 end

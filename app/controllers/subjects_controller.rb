@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:show, :update, :destroy]
+  before_action :set_subject, only: [:update, :destroy]
   respond_to :json
 
   def index
@@ -7,6 +7,7 @@ class SubjectsController < ApplicationController
   end
 
   def show
+    @subject = Subject.includes(:documents).find(params[:id])
   end
 
   def create
