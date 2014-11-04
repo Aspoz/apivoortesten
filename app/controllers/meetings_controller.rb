@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, only: [:update, :destroy]
+  before_action :set_meeting, only: [:show, :update, :destroy]
   respond_to :json
 
   def index
@@ -7,7 +7,6 @@ class MeetingsController < ApplicationController
   end
 
   def show
-    @meeting = Meeting.includes(:subjects).find(params[:id])
   end
 
   def create
@@ -40,6 +39,6 @@ class MeetingsController < ApplicationController
   end
 
   def meeting_params
-    params.require(:meeting).permit(:title,)
+    params.require(:meeting).permit(:title)
   end
 end

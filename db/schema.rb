@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029104651) do
+ActiveRecord::Schema.define(version: 20141104133447) do
 
   create_table "documents", force: true do |t|
     t.string   "title"
@@ -28,13 +28,24 @@ ActiveRecord::Schema.define(version: 20141029104651) do
     t.datetime "updated_at"
   end
 
+  create_table "meetings_subjects", id: false, force: true do |t|
+    t.integer "meeting_id"
+    t.integer "subject_id"
+  end
+
   create_table "subjects", force: true do |t|
     t.string   "title"
-    t.integer  "meeting_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "subjecttype_id"
+  end
+
+  add_index "subjects", ["subjecttype_id"], name: "index_subjects_on_subjecttype_id"
+
+  create_table "subjecttypes", force: true do |t|
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "subjects", ["meeting_id"], name: "index_subjects_on_meeting_id"
 
 end
